@@ -6,7 +6,7 @@ const FILES_TO_CACHE = [
   "./index.html",
   "./js/index.js",
   "./js/idb.js",
-  "./css/styles.css",
+  ".css/styles.css"
 ];
 
 // Install the service worker

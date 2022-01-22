@@ -9,7 +9,6 @@ console.log('-------------------------------------------------');
 console.log(`process.env.MONGODB_URI: ${process.env.MONGODB_URI}`);
 console.log('-------------------------------------------------');
 console.log(`process.env: ${process.env}`);
-console.log(process.env);
 console.log('-------------------------------------------------');
 console.log(`process.env.PORT: ${process.env.PORT}`);
 
@@ -24,11 +23,19 @@ app.use(express.json());
 app.use(express.static("public"));
 
 mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true,
-  useCreateIndex: true
-});
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  },
+  function(err, database) {
+    if(err) {
+      if (process.env.DEBUG) {
+      throw err;
+      }
+      return;
+    }
+  });
 
 // routes
 app.use(require("./routes/api.js"));

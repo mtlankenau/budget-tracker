@@ -33,15 +33,12 @@ function saveRecord(record) {
   console.log(record);
   // open a new transaction with the database with read and write permission;s 
   const transaction = db.transaction(['new_transaction'], 'readwrite');
-  console.log(transaction);
 
   // access the object store for `new_budget`
   const budgetObjectStore = transaction.objectStore('new_transaction');
-  console.log(budgetObjectStore);
 
   // add record to your store with add method
   budgetObjectStore.add(record);
-  console.log(budgetObjectStore.add(record));
 }
 
 function uploadBudget() {
